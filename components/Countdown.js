@@ -26,9 +26,7 @@ const children = ({ remainingTime }) => {
   return `${minutes}:${seconds}`;
 }
 
-
-
-const Countdown = ({ isPlaying }) => (
+const Countdown = ({ isPlaying, roundLength, colors }) => (
   <CountdownCircleTimer
   //onComplete
   //
@@ -37,17 +35,13 @@ const Countdown = ({ isPlaying }) => (
       return [true, 1000]
     }}
     strokeWidth={13}
-    duration={180}
+    duration={roundLength}
     size={150}
     trailColor={'transparent'}
-    colors={[
-      ['#f1f2da', 1],
-      ['#ff7777', 3],
-      ['#ffce96', 1],
-    ]}
+    colors={colors}
     >
       {({ remainingTime, animatedColor }) => (
-        <Animated.Text style={{ color: animatedColor, fontSize: FONT_BACK_LABEL, fontWeight: 700, fontFamily: 'Changa One', paddingRight: 4, paddingLeft: 4, }} className="animated_text">
+        <Animated.Text style={{ color: animatedColor, fontSize: FONT_BACK_LABEL, fontWeight: 700, fontFamily: 'Changa One', paddingRight: 2, paddingLeft: 2, }} className="animated_text">
           {children({remainingTime})}
         </Animated.Text>
       )}
