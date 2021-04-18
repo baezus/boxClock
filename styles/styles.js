@@ -14,11 +14,11 @@ const styles = StyleSheet.create({
   count: {
     fontSize: 25,
     fontWeight: 700,
-    marginVertical: 7,
+    marginVertical: 10,
     marginHorizontal: 7,
     textAlign: 'center',
     fontFamily: 'Changa One',
-    paddingBottom: 7,
+    paddingBottom: 10,
     color: '#ffce96',
   },
   container: {
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: 'transparent',
-    padding: 10,
     marginTop: 30,
     minWidth: 150,
   },

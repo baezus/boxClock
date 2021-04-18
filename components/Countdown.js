@@ -14,9 +14,11 @@ if (PixelRatio.get()<=2){
 const children = ({ remainingTime }) => {
   const minutes = Math.floor(remainingTime / 60);
   let seconds = remainingTime % 60;
-  if (seconds < 10) {
+  if (seconds < 10 && minutes < 1) {
     FONT_BACK_LABEL = 70
     return `${seconds}`
+  } else if (seconds < 10 && minutes >= 1) {
+    seconds = '0' + seconds;
   } else if (PixelRatio.get()<=2){
     FONT_BACK_LABEL = 53;
   } else {
@@ -32,16 +34,17 @@ const Countdown = ({ isPlaying, roundLength, colors }) => (
   //
     isPlaying={isPlaying}
     onComplete={() => {
+      isPlaying = false;
       return [true, 1000]
     }}
-    strokeWidth={13}
+    strokeWidth={8}
     duration={roundLength}
-    size={150}
+    size={130}
     trailColor={'transparent'}
     colors={colors}
     >
       {({ remainingTime, animatedColor }) => (
-        <Animated.Text style={{ color: animatedColor, fontSize: FONT_BACK_LABEL, fontWeight: 700, fontFamily: 'Changa One', paddingRight: 2, paddingLeft: 2, }} className="animated_text">
+        <Animated.Text style={{ color: animatedColor, fontSize: FONT_BACK_LABEL, fontWeight: 700, fontFamily: 'Changa One', paddingRight: 2, paddingLeft: 2, }}>
           {children({remainingTime})}
         </Animated.Text>
       )}
