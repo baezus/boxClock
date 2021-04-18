@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Changa One',
     paddingBottom: 7,
     color: '#ff7777',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    padding: 10,
   }
 })
 

@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {setCustomText, setCustomTextInput} from 'react-native-global-props';
 import styles from './styles/styles';
 import Countdown from './components/Countdown';
 import CountdownContainer from './screens/CountdownContainer';
+import Home from './screens/Home';
 
 
 export default function App() {
@@ -16,11 +17,34 @@ export default function App() {
 
   setCustomText(customTextProps);
   setCustomTextInput(customTextProps);
+  
 
-  return (
-    <View style={styles.container}>
-      <CountdownContainer isPlaying={true} style={styles.textDefaultFont} />
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [configDone, setConfigDone] = useState(false);
+
+  const onPress = () => {
+    setConfigDone(prevConfig => !prevConfig);
+  };
+
+  if (configDone) {
+    return (
+      <View style={styles.container}>
+        <CountdownContainer isPlaying={true} style={styles.textDefaultFont}/>
+        <StatusBar style="auto" />
+      </View>
+    )
+  } else {
+    return (
+      <View style={styles.container}> <Home/>
+        <TouchableOpacity
+          onPress={onPress}
+          style={styles.button}>
+            <Text style={styles.fightButton}>
+              Go
+            </Text>
+        </TouchableOpacity>
+        <StatusBar style="auto" />
+      </View>
+    )
+  }
+
 }
